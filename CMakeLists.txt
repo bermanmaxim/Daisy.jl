@@ -13,20 +13,12 @@ ExternalProject_Add(project_libdaisy
    INSTALL_COMMAND ""
    )
 
-# INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/libdaisy/include)
-
-# LINK_DIRECTORIES(${CMAKE_BINARY_DIR}/res)
-
-#add_executable(main main.cpp)
-# add_subdirectory(${CMAKE_BINARY_DIR}/libdaisy/lib)
-#TARGET_LINK_LIBRARIES(main ${CMAKE_BINARY_DIR}/libdaisy/lib/libdaisy.a)
-
-
 add_library(libdaisy STATIC IMPORTED)
 set_property(TARGET libdaisy PROPERTY IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/libdaisy/lib/libdaisy.a)
 add_dependencies(libdaisy project_libdaisy)
 
-add_executable(daisy_c main.cpp)
+# add_executable(daisy_c main.cpp)
+add_library(daisyC SHARED daisy_C.cc)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/libdaisy/include)
-TARGET_LINK_LIBRARIES(daisy_c libdaisy)
+TARGET_LINK_LIBRARIES(daisyC libdaisy)

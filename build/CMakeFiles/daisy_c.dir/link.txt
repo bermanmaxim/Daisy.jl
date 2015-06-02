@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/daisy_c.dir/main.cpp.o  -o daisy_c -rdynamic libdaisy/lib/libdaisy.a 

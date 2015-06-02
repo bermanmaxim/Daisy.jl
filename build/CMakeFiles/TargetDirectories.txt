@@ -1,0 +1,2 @@
+/home/maxim/Daisy_C/build/CMakeFiles/daisy_c.dir
+/home/maxim/Daisy_C/build/CMakeFiles/project_libdaisy.dir

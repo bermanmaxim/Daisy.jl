@@ -8,7 +8,8 @@ using TestImages
 const daisyC = "build/libdaisyC.so"
 
 img = testimage("mandrill")
-convert(Image{Gray}, img)
+g = convert(Image{Gray}, img)
+A = map(float32, data(g)); typeof(A)
 
 """This maps the dummy C daisy struct"""
 type Daisy_struct
@@ -27,3 +28,6 @@ type Daisy
   end
 end
 
+function set_image!(desc::Daisy, Array{Float32, 2})
+
+end

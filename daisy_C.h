@@ -7,6 +7,8 @@
 #ifndef __DAISY_C_H
 #define __DAISY_C_H
 
+#include <stddef.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif

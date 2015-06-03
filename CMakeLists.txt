@@ -17,8 +17,13 @@ add_library(libdaisy STATIC IMPORTED)
 set_property(TARGET libdaisy PROPERTY IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/libdaisy/lib/libdaisy.a)
 add_dependencies(libdaisy project_libdaisy)
 
-# add_executable(daisy_c main.cpp)
 add_library(daisyC SHARED daisy_C.cc)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/libdaisy/include)
 TARGET_LINK_LIBRARIES(daisyC libdaisy)
+
+add_executable(daisycpptest main.cpp)
+TARGET_LINK_LIBRARIES(daisycpptest libdaisy)
+
+add_executable(daisyctest mainc.c)
+TARGET_LINK_LIBRARIES(daisyctest daisyC)

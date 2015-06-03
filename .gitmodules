@@ -1,3 +1,5 @@
 [submodule "libdaisy"]
 	path = libdaisy
 	url = git@github.com:bermanmaxim/libdaisy.git
+	branch = master
+

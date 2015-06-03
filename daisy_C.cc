@@ -8,7 +8,7 @@ extern "C" {
         }
 
         void daisy_set_image(daisy* desc, float* im, int h, int w) {
-                desc->set_image(im, h, w);
+                desc->set_float_image(im, h, w);
         }
 
         void daisy_verbose(daisy* desc, size_t v){

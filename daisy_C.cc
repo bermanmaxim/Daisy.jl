@@ -35,6 +35,11 @@ extern "C" {
                 desc->get_descriptor(y, x, thor);
         }
 
+        void free_daisy(daisy* desc) {
+                desc->reset();
+        }
+
+        // This crashes, if someone could tell me why...
         void delete_daisy(daisy* desc) {
                 delete desc;
         }

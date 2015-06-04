@@ -31,6 +31,10 @@ extern "C" {
                 desc->normalize_descriptors();
         }
 
+        int daisy_descriptor_size(daisy* desc){
+                desc->descriptor_size();
+        }
+
         void daisy_get_descriptor(daisy* desc, int y, int x, float* thor){
                 desc->get_descriptor(y, x, thor);
         }
@@ -39,7 +43,6 @@ extern "C" {
                 desc->reset();
         }
 
-        // This crashes, if someone could tell me why...
         void delete_daisy(daisy* desc) {
                 delete desc;
         }

@@ -31,6 +31,8 @@ void daisy_normalize_descriptors(daisy* desc);
 
 void daisy_get_descriptor(daisy* desc, int y, int x, float* thor);
 
+int daisy_descriptor_size(daisy* desc);
+
 void delete_daisy(daisy* desc);
 
 #ifdef __cplusplus

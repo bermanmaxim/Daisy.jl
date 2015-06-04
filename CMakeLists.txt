@@ -4,7 +4,7 @@ project (Daisy_C)
 include(ExternalProject)
 
 ExternalProject_Add(project_libdaisy
-   DOWNLOAD_COMMAND git submodule init COMMAND git submodule update --remote
+   DOWNLOAD_COMMAND "" # git submodule init COMMAND git submodule update --remote
    UPDATE_COMMAND ""
    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libdaisy
    BUILD_IN_SOURCE 1

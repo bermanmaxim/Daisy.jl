@@ -1,7 +1,7 @@
 using Docile
 module JuDaisy
 
-  export Daisy, verbose!, image!, parameters!, compute!, normalize!, getindex
+  export Daisy, verbose!, image!, parameters!, compute!, normalize!, getindex, descriptor_size
 
   push!(LOAD_PATH, dirname(Base.source_path()))
   const daisyC = "build/libdaisyC.so"
@@ -46,12 +46,20 @@ module JuDaisy
     ccall( (:daisy_normalize_descriptors, daisyC), Void, (Ptr{Daisy_struct},), desc.ptr)
   end
 
-  import Base.getindex
-  """To meet Julia convention x and y start at 1"""
-  function getindex(desc::Daisy, y::Int, x::Int)
-    thor = Cfloat[0]
-    ccall( (:daisy_get_descriptor, daisyC), Void, (Ptr{Daisy_struct}, Cint, Cint, Ptr{Cfloat}), desc.ptr, y-1, x-1, thor)
-    thor[1]
+  function descriptor_size(desc::Daisy)
+    ccall( (:daisy_descriptor_size, daisyC), Cint, (Ptr{Daisy_struct},), desc.ptr)
   end
 
+  import Base.getindex
+  """To meet Julia convention x and y start at 1
+  no bounds checking, careful !"""
+  function getindex(desc::Daisy, y::Int, x::Int)
+    thor = fill(0.0f0, descriptor_size(desc::Daisy))
+    ccall( (:daisy_get_descriptor, daisyC), Void, (Ptr{Daisy_struct}, Cint, Cint, Ptr{Cfloat}), desc.ptr, y-1, x-1, thor)
+    thor
+  end
+
+
+
 end
+

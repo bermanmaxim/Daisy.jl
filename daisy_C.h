@@ -29,7 +29,7 @@ void daisy_compute_descriptors(daisy* desc);
 
 void daisy_normalize_descriptors(daisy* desc);
 
-void daisy_get_descriptor(daisy* desc, int y, int x, float* thor);
+float* daisy_get_descriptor(daisy* desc, int y, int x);
 
 int daisy_descriptor_size(daisy* desc);
 

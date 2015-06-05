@@ -28,14 +28,17 @@ int main(int argc, char* argv[]) {
         desc->initialize_single_descriptor_mode();
         desc->compute_descriptors();
         desc->normalize_descriptors();
+
         int descsize = desc->descriptor_size();
         cout << "descriptor size " << descsize << endl;
 
-        float* thor = new float[descsize];
+        float* thor = NULL;
+        //memset(thor, 0, sizeof(float)*desc->descriptor_size() );
+        //float* thor = (float*)calloc(descsize, sizeof(float));
         //float thor[descsize];
-        memset(thor, 0, sizeof(float)*desc->descriptor_size() );
         
         desc->get_descriptor(7, 7, thor);
+
         printf("[");
         int i=0;
         for (i; i<200; i++) {
@@ -43,6 +46,8 @@ int main(int argc, char* argv[]) {
         }
         printf("]");
         //desc->save_descriptors_ascii("test_out.txt");
+        //free(thor);
+        //thor=NULL;
         delete desc;
         return 0;
 }

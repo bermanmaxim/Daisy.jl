@@ -7,7 +7,7 @@ extern "C" {
                 return new daisy();
         }
 
-        void daisy_set_image(daisy* desc, float* im, int h, int w) {
+        void daisy_set_float_image(daisy* desc, float* im, int h, int w) {
                 desc->set_float_image(im, h, w);
         }
 
@@ -35,8 +35,10 @@ extern "C" {
                 desc->descriptor_size();
         }
 
-        void daisy_get_descriptor(daisy* desc, int y, int x, float* thor){
+        float* daisy_get_descriptor(daisy* desc, int y, int x){
+                float* thor = NULL;
                 desc->get_descriptor(y, x, thor);
+                return thor;
         }
 
         void free_daisy(daisy* desc) {

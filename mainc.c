@@ -23,25 +23,22 @@ int main(int argc, char* argv[]) {
         int h = 14.;
         int w = 13.;
 
-        daisy_set_image(desc, im, h, w);
+        daisy_set_float_image(desc, im, h, w);
         daisy_set_parameters(desc, 3., 3, 8, 8);
         daisy_initialize_single_descriptor_mode(desc);
         daisy_compute_descriptors(desc);
         daisy_normalize_descriptors(desc);
 
         int desc_size = daisy_descriptor_size(desc);
+                
+        float* thor = daisy_get_descriptor(desc, 7, 7);
         
-        thor=(float*)malloc(desc_size*sizeof(float));
-        memset(thor, 0, desc_size*sizeof(float) );
-        
-        daisy_get_descriptor(desc, 7, 7, thor);
         printf("[");
         int i=0;
         for (i; i<desc_size; i++) {
         	printf(" %f \n", thor[i]);
         }
         printf("]");
-        free(thor)
         delete_daisy(desc);
         return 0;
 }
